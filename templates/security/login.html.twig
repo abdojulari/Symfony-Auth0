@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+<div class="container-fluid  bg py-5">
+  <div class="row justify-content-center align-items-center">
+      <div class="col-md-4  align-middle">
+        <div class="login cb p-5 my-5 text-white fs-7">
+          <form class="mb-4" method="post">
+              {% if error %}
+                  <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+              {% endif %}
+
+              <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+              <label for="inputEmail">Email</label>
+              <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control bg-transparent text-white" autocomplete="email" required autofocus>
+              <label for="inputPassword">Password</label>
+              <input type="password" name="password" id="inputPassword" class="form-control bg-transparent text-white" autocomplete="current-password" required>
+
+              <input type="hidden" name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+              >
+              
+                  {# Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                  See https://symfony.com/doc/current/security/remember_me.html #}
+
+                  <div class="checkbox mb-3">
+                      <label>
+                          <input type="checkbox" name="_remember_me"> Remember me
+                      </label>
+                  </div>
+            
+               <p class="fs-7 text-secondary">
+              If you don't already have an account, please 
+              <a class="text-decoration-none text-white" href="{{ path('register') }}">register</a>
+          </p>
+              <button class="btn btn-outline-light fs-7 text" type="submit">
+                  Sign in
+              </button>
+          </form>
+              <a
+                href="{{ path('hwi_oauth_service_redirect', {'service': 'auth0'}) }}"
+                class="text-white text-decoration-none"
+              >
+                <div class="card mb-3 border border-1 border-light w-50" style="background-color: #e8542e">
+                  <div class="card-body" style="padding: 0;">
+                    <img class="me-1" src="https://images.ctfassets.net/23aumh6u8s0i/WtIL3D91xLCC14B7qN5y5/eb2995f1c305061449cc5115822dfade/02VeCz0" height="40" />
+                     Auth0 Login
+                  </div>
+                </div>
+              </a>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
