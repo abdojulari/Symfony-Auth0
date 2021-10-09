@@ -3,18 +3,31 @@
 {% block title %}Hello RegistrationController!{% endblock %}
 
 {% block body %}
-<div class="container-fluid bg py-5">
-    <div class="row justify-content-center align-items-center text-white">
-        <div class="col-md-6 p-5 m-5">
-          <div class="login p-5 m-5">
-          {{ form(form) }}
-
-          <p class="fs-7 text-secondary">
-              If you already have an account, please 
-              <a class="text-decoration-none text-white" href="{{ path('app_logout') }}">sign in</a>
-          </p>
-          </div>
-        </div>
+<section class="bg py-5">
+<div class="container">
+    <div class="row m-5 login justify-content-center align-items-center text-white">
+            <div class="col-md-6 p-5 side_login">
+                <h2 class="text-white">Join Our Community</h2>
+                <p class="fs-7">Are you ready to be challenged? This doesn't go without a reward,
+                all you need do is to enter your CGPA and stand a chance to win from us</p>
+            </div>
+            <div class="col-md-6">
+                <div class=" p-5">
+                {{ form(form) }}
+                    
+                </div>
+                <p class="fs-7 mx-5 text-dark">
+                    Have an account? Please 
+                    <a class="text-decoration-none text-white" href="{{ path('app_logout') }}">sign in</a>
+                    OR
+                    <a class="text-white text-decoration-none"
+                        href="{{ path('hwi_oauth_service_redirect', {'service': 'auth0'}) }}"
+                        ><span>Connect with</span><img class="mx-1" src="https://images.ctfassets.net/23aumh6u8s0i/WtIL3D91xLCC14B7qN5y5/eb2995f1c305061449cc5115822dfade/02VeCz0" height="25" />
+                    </a>
+                </p>
+            </div>
+        
     </div>
 </div>
+</section>
 {% endblock %}
